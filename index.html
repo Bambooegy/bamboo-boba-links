@@ -3,63 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <title>Bamboo Boba</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-  body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: #f2f9f4;
-    color: #1b5e20;
-    text-align: center;
-    padding: 60px 20px;
-  }
-  h1 {
-    font-size: 34px;
-    font-weight: 600;
-    margin-bottom: 40px;
-  }
-  .button {
-    display: block;
-    margin: 14px auto;
-    padding: 14px 24px;
-    width: 260px;
-    background: #77c593;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 500;
-    transition: 0.25s;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  }
-  .button:hover {
-    background: #5aad79;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-  }
-.location-btn { font-size: 20px; padding: 18px 28px; display: block; margin: 50px auto 0 auto; }
-.location-btn:hover { transform: scale(1.04); }
-.location-btn {  }
-.location-btn {  }
-.location-btn {
-  
+/* ================= BASE ================= */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f2f9f4;
+  color: #1b5e20;
+  text-align: center;
+  padding: 60px 20px;
 }
-.location-btn {  }
 
-.location-btn {  }
+.logo {
+  width: 150px;
+  max-width: 45vw;
+  margin: 0 auto 25px;
+  display: block;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
 
-.location-btn {  }
+h1 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
 
-.location-btn {  }
+.button {
+  display: block;
+  margin: 14px auto;
+  padding: 14px 24px;
+  width: 260px;
+  background: #77c593;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
 
-/* Tooltip */
-.location-btn {  }
 .location-btn {
-  
+  font-size: 20px;
+  padding: 18px 28px;
+  margin-top: 60px;
   position: relative;
 }
+
+/* Tooltip */
 .location-btn::after {
   content: "Glad to welcome you at Bamboo";
   position: absolute;
-  bottom: 60px;
+  bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;
@@ -73,20 +74,159 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   white-space: nowrap;
 }
+
 .location-btn:hover::after {
   opacity: 1;
 }
-.location-btn { font-size: 20px; padding: 18px 28px; display: block; margin: 60px auto 0 auto; position: static; }
+
+/* =====================================================
+   AUTO SWITCH
+   Desktop (>= 769px) | Mobile (<= 768px)
+===================================================== */
+
+/* ---------- DESKTOP (POWER) ---------- */
+@media (min-width: 769px) {
+
+  body {
+    animation: fadeSlide 1s ease forwards;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo {
+    animation: popIn 1s ease forwards;
+  }
+
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.85); }
+    70% { transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .button {
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .button:nth-of-type(1) { animation-delay: 0.1s; }
+  .button:nth-of-type(2) { animation-delay: 0.2s; }
+  .button:nth-of-type(3) { animation-delay: 0.3s; }
+  .button:nth-of-type(4) { animation-delay: 0.4s; }
+  .button:nth-of-type(5) { animation-delay: 0.5s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.35),
+      transparent
+    );
+    transition: 0.6s;
+  }
+
+  .button:hover::before {
+    left: 130%;
+  }
+
+  .button:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  }
+
+  .location-btn {
+    background: linear-gradient(135deg, #6fcf97, #4caf50);
+    animation: pulse 2.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76,175,80,0.45); }
+    70% { box-shadow: 0 0 0 16px rgba(76,175,80,0); }
+    100% { box-shadow: 0 0 0 0 rgba(76,175,80,0); }
+  }
+}
+
+/* ---------- MOBILE (LIGHT) ---------- */
+@media (max-width: 768px) {
+
+  body {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .logo {
+    animation: scaleFade 0.45s ease-out forwards;
+  }
+
+  @keyframes scaleFade {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .button {
+    animation: rise 0.35s ease-out forwards;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .button:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  }
+
+  .location-btn {
+    background: #5aad79;
+  }
+
+  .location-btn::after {
+    animation: none;
+  }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
+
 <body>
-<img $1style="$2 box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
+
+<img src="bamboo-logo.png" alt="Bamboo Boba Logo" class="logo">
+
 <h1>Bamboo Boba</h1>
+
 <a class="button" href="https://bambooegy.github.io/Bamboo-menu" target="_blank">Order Now</a>
 <a class="button" href="https://www.tiktok.com/@bamboo_egy" target="_blank">TikTok</a>
 <a class="button" href="https://www.instagram.com/bamboo_egy/" target="_blank">Instagram</a>
 <a class="button" href="https://www.facebook.com/profile.php?id=61578624628819" target="_blank">Facebook</a>
 <a class="button" href="https://wa.me/201019634984" target="_blank">WhatsApp</a>
-<a class="button location-btn" href="https://maps.app.goo.gl/uCz5DME7FmDDk7Vu9" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Location</a>
+
+<a class="button location-btn" href="https://maps.app.goo.gl/uCz5DME7FmDDk7Vu9" target="_blank">
+  📍 Location
+</a>
+
 </body>
 </html>
