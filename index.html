@@ -7,7 +7,12 @@
 
 <style>
 /* ================= BASE ================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
   background: #f2f9f4;
   color: #1b5e20;
@@ -15,6 +20,7 @@ body {
   padding: 60px 20px;
 }
 
+/* ================= LOGO ================= */
 .logo {
   width: 150px;
   max-width: 45vw;
@@ -26,29 +32,32 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.18);
 }
 
+/* ================= TITLE ================= */
 h1 {
   font-size: 34px;
   font-weight: 600;
   margin-bottom: 40px;
 }
 
+/* ================= BUTTONS ================= */
 .button {
   display: block;
   margin: 14px auto;
   padding: 14px 24px;
   width: 260px;
   background: #77c593;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 50px;
   font-size: 18px;
   font-weight: 500;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   position: relative;
   overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* ================= LOCATION BUTTON ================= */
 .location-btn {
   font-size: 20px;
   padding: 18px 28px;
@@ -121,6 +130,7 @@ h1 {
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* Shine effect */
   .button::before {
     content: "";
     position: absolute;
@@ -214,6 +224,7 @@ h1 {
 
 <body>
 
+<!-- LOGO -->
 <img src="bamboo-logo.png" alt="Bamboo Boba Logo" class="logo">
 
 <h1>Bamboo Boba</h1>
